@@ -6,17 +6,32 @@
             // This is the same as the line in the background script
             const queryParam = request.ClipID;
             newVideoLoaded();
+            sendResponse({ farewell: "goodbye" });
+            return true;
         }
         else if (request.type === "Mobile") {
             const queryParam = request.ClipID;
             newMobileVideoLoaded(queryParam);
+            sendResponse({ farewell: "goodbye" });
         }
     });
     const newMobileVideoLoaded = (queryParam) => {
-        // console.log("New Mobile Video Loaded");
-        const downloadButton = document.createElement("img");
-        downloadButton.src = chrome.runtime.getURL("assets/twitch.png");
+        const downloadButton = document.createElement("div");
+        const content = document.createTextNode("Go to Desktop Version");
+        downloadButton.appendChild(content);
+        downloadButton.style.backgroundColor = "rgb(145, 71, 255)";
         downloadButton.style.height = "30px";
+        downloadButton.style.width = "140px";
+        downloadButton.style.color = "white";
+        downloadButton.style.borderRadius = "4px";
+        downloadButton.style.display = "flex";
+        downloadButton.style.alignItems = "center";
+        downloadButton.style.justifyContent = "center";
+        downloadButton.style.verticalAlign = "middle";
+        downloadButton.style.position = "relative";
+        downloadButton.style.overflow = "hidden";
+        downloadButton.style.cursor = "pointer";
+        downloadButton.style.marginRight = "10px";
         downloadButton.className = "downloadButton";
         downloadButton.title = "Download";
         twitchControll = document.getElementsByClassName("Layout-sc-nxg1ff-0 jGNRNz")[0];
@@ -28,13 +43,25 @@
         }
     };
     const newVideoLoaded = () => {
-        const downloadButton = document.createElement("img");
-        downloadButton.src = chrome.runtime.getURL("assets/twitch.png");
+        const downloadButton = document.createElement("button");
+        const content = document.createTextNode("Download Clip");
         downloadButton.style.height = "30px";
+        downloadButton.style.width = "120px";
+        downloadButton.style.backgroundColor = "hsl(0deg 0% 100% / 15%)";
+        downloadButton.style.color = "white";
+        downloadButton.style.borderRadius = "4px";
+        downloadButton.style.textAlign = "center";
+        downloadButton.style.alignItems = "center";
+        downloadButton.style.justifyContent = "center";
+        downloadButton.style.verticalAlign = "middle";
+        downloadButton.style.position = "relative";
+        downloadButton.style.overflow = "hidden";
+        downloadButton.style.cursor = "pointer";
+        downloadButton.style.marginBottom = "10px";
         downloadButton.className = "downloadButton";
         downloadButton.title = "Download";
+        downloadButton.appendChild(content);
         twitchControll = document.getElementsByClassName("Layout-sc-nxg1ff-0 IYiuJ")[0];
-        // console.log(twitchControll.children[0]);
         if (twitchControll.children[0].className === "Layout-sc-nxg1ff-0 pqFci") {
             twitchControll.prepend(downloadButton);
             downloadButton.addEventListener("click", DownloadClips);
@@ -53,6 +80,8 @@
             type: "Download",
             ClipID: videoName,
             ClipURL: videoSrc,
+        }, (response) => {
+            console.log(response.farewell);
         });
     };
     const toDesktopView = (queryParam) => {
@@ -60,6 +89,8 @@
         chrome.runtime.sendMessage({
             type: "Mobile",
             ClipID: queryParam,
+        }, (response) => {
+            console.log(response);
         });
     };
 })();

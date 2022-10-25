@@ -12,10 +12,13 @@
   "content_scripts": [
     {
       "matches": ["*://*.twitch.tv/*"],
-      "css": ["Style.css"],
+
       "js": ["build/contentScript.js"]
     }
   ],
+  "externally_connectable": {
+    "matches": ["*://*.twitch.tv/*"]
+  },
   "web_accessible_resources": [
     {
       "resources": ["assets/twitch.png"],
