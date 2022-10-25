@@ -8,7 +8,7 @@ chrome.tabs.onUpdated.addListener((tabId: any, changedInfo: any, tab: any) => {
         type: "New",
         ClipID: queryParam,
       });
-    }else if(tab.url.includes("m.twitch.tv/clip")){
+    } else if (tab.url.includes("m.twitch.tv/clip")) {
       const queryParam: String = tab.url.split("/")[4];
 
       // console.log("New clip loaded: " + queryParam);
@@ -16,7 +16,6 @@ chrome.tabs.onUpdated.addListener((tabId: any, changedInfo: any, tab: any) => {
         type: "Mobile",
         ClipID: queryParam,
       });
-
     }
   }
 });
@@ -29,6 +28,10 @@ chrome.runtime.onMessage.addListener(
       chrome.downloads.download({
         url: request.ClipURL,
         filename: request.ClipID + ".mp4",
+      });
+    } else if (request.type === "Mobile") {
+      chrome.tabs.update({
+        url: "https://clips.twitch.tv/" + request.ClipID,
       });
     }
   }
