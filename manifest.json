@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Clips to YT",
+  "description": "",
+  "version": "0.1",
+  "permissions": ["activeTab", "storage", "tabs", "webRequest", "downloads"],
+  "host_permissions": ["*://*.twitch.tv/*"],
+
+  "background": {
+    "service_worker": "build/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.twitch.tv/*"],
+      "css": ["Style.css"],
+      "js": ["build/contentScript.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/twitch.png"],
+      "matches": ["*://*.twitch.tv/*"]
+    }
+  ],
+  "action": {
+    "default_icon": "assests/yt.png",
+    "default_title": "Clips to YT",
+    "default_popup": "popup.html"
+  }
+}
