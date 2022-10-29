@@ -1,8 +1,8 @@
 "use strict";
 chrome.tabs.onUpdated.addListener((tabId, changedInfo, tab) => {
-    console.log(tabId);
-    console.log(changedInfo);
-    console.log(tab);
+    // console.log(tabId);
+    // console.log(changedInfo);
+    // console.log(tab);
     if (tab.url) {
         if (tab.url.includes("clips.twitch.tv")) {
             const queryParam = tab.url.split("/")[3];
@@ -10,7 +10,7 @@ chrome.tabs.onUpdated.addListener((tabId, changedInfo, tab) => {
                 type: "New",
                 ClipID: queryParam,
             }, (response) => {
-                console.log(response.farewell);
+                // console.log(response.farewell);
             });
         }
         else if (tab.url.includes("m.twitch.tv/clip")) {
@@ -19,7 +19,17 @@ chrome.tabs.onUpdated.addListener((tabId, changedInfo, tab) => {
                 type: "Mobile",
                 ClipID: queryParam,
             }, (response) => {
-                console.log(response.farewell);
+                // console.log(response.farewell);
+            });
+        }
+        else if (tab.url.includes("www.twitch.tv/")) {
+            const queryParam = tab.url.split("/")[4];
+            // console.log(queryParam);
+            chrome.tabs.sendMessage(tabId, {
+                type: "NewChannel",
+                ClipID: queryParam,
+            }, (response) => {
+                // console.log(response.farewell);
             });
         }
     }
