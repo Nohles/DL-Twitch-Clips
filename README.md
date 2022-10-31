@@ -18,3 +18,4 @@ DL-Twitch-Clips is a chrome extension that allows you to download clips from Twi
 ![chrome_W4WL4zL8oz](https://user-images.githubusercontent.com/72172038/198835362-5daa78db-83a3-4206-b036-00ab015ff0e1.png)
 
 Created this chrome extension using typescript and learned how to create a chrome extension using the Manifest v3.
+https://chrome.google.com/webstore/detail/download-twitch-clips/ceidjopggcgjldgpfkooaoogcpihpoff?hl=en&authuser=1
