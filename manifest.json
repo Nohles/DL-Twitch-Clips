@@ -26,7 +26,7 @@
     }
   ],
   "action": {
-    "default_icon": "assests/yt.png",
+    "default_icon": "assests/clips.png",
     "default_title": "Clips to YT",
     "default_popup": "popup.html"
   }
