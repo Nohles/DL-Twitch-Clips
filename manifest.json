@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Download Twitch Clips",
   "description": "",
-  "version": "0.2",
+  "version": "0.4",
   "permissions": ["tabs", "downloads"],
   "host_permissions": ["*://*.twitch.tv/*"],
 
@@ -19,15 +19,15 @@
   "externally_connectable": {
     "matches": ["*://*.twitch.tv/*"]
   },
-  "web_accessible_resources": [
-    {
-      "resources": ["assets/twitch.png"],
-      "matches": ["*://*.twitch.tv/*"]
-    }
-  ],
+
   "action": {
-    "default_icon": "assets/clips.jpg",
+    "default_icon": "icon.png",
     "default_title": "Clips to YT",
     "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
   }
 }

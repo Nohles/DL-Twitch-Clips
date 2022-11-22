@@ -27,7 +27,7 @@
     // console.log("newChannelVideoLoaded");
     const downloadButton = document.createElement("button");
     const content = document.createTextNode("Download Clip");
-
+    console.log("testing");
     downloadButton.style.height = "30px";
     downloadButton.style.width = "120px";
     downloadButton.style.backgroundColor = "hsl(0deg 0% 100% / 15%)";
@@ -46,12 +46,12 @@
     downloadButton.title = "Download";
     downloadButton.appendChild(content);
     twitchControll = document.getElementsByClassName(
-      "Layout-sc-nxg1ff-0 bAfduc"
+      "Layout-sc-1xcs6mc-0 dnWYEl"
     )[0];
     if (
       twitchControll.children[0].className ===
-        "ScCoreButton-sc-1qn4ixc-0 ScCoreButtonSecondary-sc-1qn4ixc-2 ffyxRu kgzEiA" ||
-      twitchControll.children[0].className === "Layout-sc-nxg1ff-0 LtiJW"
+        "ScCoreButton-sc-ocjdkq-0 ScCoreButtonSecondary-sc-ocjdkq-2 ibtYyW hUInuk" ||
+      twitchControll.children[0].className === "Layout-sc-1xcs6mc-0 jQeTFX"
     ) {
       twitchControll.prepend(downloadButton);
 
@@ -82,7 +82,7 @@
     twitchControll = document.getElementsByClassName(
       "Layout-sc-nxg1ff-0 jGNRNz"
     )[0];
-    if (twitchControll.children[0].className === "Layout-sc-nxg1ff-0 gkQnmJ") {
+    if (twitchControll.children[0].className === "Layout-sc-nxg1ff-0 iFMMAq") {
       twitchControll.prepend(downloadButton);
       downloadButton.addEventListener("click", function () {
         toDesktopView(queryParam);
@@ -106,15 +106,16 @@
     downloadButton.style.overflow = "hidden";
     downloadButton.style.cursor = "pointer";
     downloadButton.style.marginBottom = "10px";
-
+    downloadButton.style.marginLeft = "10px";
+    downloadButton.style.marginTop = "10px";
     downloadButton.className = "downloadButton";
     downloadButton.title = "Download";
     downloadButton.appendChild(content);
     twitchControll = document.getElementsByClassName(
-      "Layout-sc-nxg1ff-0 IYiuJ"
+      "Layout-sc-1xcs6mc-0 jJplWu"
     )[0];
-    if (twitchControll.children[0].className === "Layout-sc-nxg1ff-0 pqFci") {
-      twitchControll.prepend(downloadButton);
+    if (twitchControll.lastElementChild?.className !== "downloadButton") {
+      twitchControll.append(downloadButton);
 
       downloadButton.addEventListener("click", DownloadClips);
     }
@@ -124,7 +125,7 @@
     const video = document.getElementsByTagName("video")[0];
     const videoSrc = video.src;
     let videoName = document
-      .getElementsByClassName("CoreText-sc-cpl358-0 iDQzRR")
+      .getElementsByClassName("CoreText-sc-1txzju1-0 glTIMN")
       .item(0)?.textContent;
     if (videoName === undefined || videoName === null) {
       videoName = document
